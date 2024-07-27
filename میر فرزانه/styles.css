@@ -1,0 +1,151 @@
+body {
+    background: linear-gradient(to right, #ffedc9, #fcebeb);
+    font-family: 'Cairo', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #f5f5dc;
+    border-bottom: 1px solid #ccc;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.bubble-header {
+    display: inline-block;
+    background: #fff;
+    border-radius: 20px;
+    padding: 10px 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    color: #4b4b4b;
+    margin: 0;
+    font-weight: 600;
+}
+
+main {
+    padding: 20px;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.product {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product img {
+    width: 100%;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.product h2 {
+    font-size: 1.5em;
+    margin: 10px 0;
+    color: #4b4b4b;
+}
+
+.product p {
+    color: #777;
+    font-size: 1em;
+}
+
+.product button {
+    background: #f5f5dc;
+    color: #4b4b4b;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease, transform 0.3s ease;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.product button:hover {
+    background: #e0d3af;
+    transform: scale(1.05);
+}
+
+.product:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+}
+
+.contact-info {
+    background: linear-gradient(to right, #ffedc9, #fcebeb);
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.contact-info h2 {
+    color: #4b4b4b;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.contact-info p {
+    color: #777;
+    font-size: 1em;
+}
+
+/* Lightbox styles */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+.lightbox:target {
+    display: flex;
+}
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-buttons a {
+    text-decoration: none;
+    color: white;
+    background: #04c22d;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: background 0.3s ease, transform 0.3s ease;
+    font-weight: 600;
+    
+}

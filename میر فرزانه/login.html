@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحه ورود</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #fa8094, #fad6e5);
+            font-family: 'Cairo', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .login-container {
+            background: linear-gradient(to right, #fa8094, #fad6e5);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            animation: fadeIn 1s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .bubble {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .bubble:nth-child(1) {
+            top: -50px;
+            left: -50px;
+        }
+
+        .bubble:nth-child(2) {
+            top: -80px;
+            right: -40px;
+        }
+
+        .bubble:nth-child(3) {
+            bottom: -50px;
+            left: -50px;
+        }
+
+        .bubble:nth-child(4) {
+            bottom: -80px;
+            right: -50px;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+            color: #444;
+            font-weight: 600;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-group input:focus {
+            border-color: #ff758c;
+            outline: none;
+        }
+
+        .btn {
+            background: #04c22d;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease, transform 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background: #ff5e7b;
+            transform: scale(1.05);
+        }
+
+        .footer {
+            margin-top: 25px;
+            color: #777;
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: #ff5e7b;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            color: #ff4444;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <h2>ورود به حساب کاربری</h2>
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="username">نام کاربری</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">رمز عبور</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn">ورود</button>
+            <div id="error" class="error-message"></div>
+        </form>
+        <div class="footer">
+            <p>حساب کاربری ندارید؟ <a href="register.html">ثبت‌نام کنید</a></p>ew
+        </div>
+    </div>
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const error = document.getElementById("error");
+
+            if (username === "admin" && password === "admin") {
+                window.location.href = "main.html";
+            } else {
+                error.textContent = "نام کاربری یا رمز عبور اشتباه است.";
+            }
+        });
+    </script>
+</body>
+
+</html>
