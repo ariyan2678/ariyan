@@ -1,0 +1,12 @@
+name: Start VPS
+
+on: workflow_dispatch
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install & Start Code-Server
+        run: |
+          curl -fsSL https://code-server.dev/install.sh | sh
+          code-server --bind-addr 0.0.0.0:8080 --auth none
