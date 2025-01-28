@@ -1,23 +1,13 @@
-name: CI
-
-on: [push, workflow_dispatch]
+on: workflow_dispatch  # دستی اجرا کن
 
 jobs:
-  build:
-    runs-on: windows-latest
+  run-server:
+    runs-on: ubuntu-latest
     steps:
-      - name: Download
-        run: Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
-      - name: Extract
-        run: Expand-Archive ngrok.zip
-      - name: Auth
-        run: .\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
-        env:
-          NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
-      - name: Enable TS
-        run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -name "fDenyTSConnections" -Value 0
-      - run: Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
-      - run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
-      - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "P@ssw0rd!" -Force)
-      - name: Create Tunnel
-        run: .\ngrok\ngrok.exe tcp 3389
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Start Simple HTTP Server
+        run: |
+          nohup python3 -m http.server 8080 &  # اجرای سرور در بک‌گراند
+          sleep infinity  # این خط باعث می‌شه GitHub Action متوقف نشه و باز بمونه!
