@@ -1,0 +1,13 @@
+on: workflow_dispatch  # دستی اجرا کن
+
+jobs:
+  run-server:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Start Simple HTTP Server
+        run: |
+          nohup python3 -m http.server 8080 &  # اجرای سرور در بک‌گراند
+          sleep infinity  # این خط باعث می‌شه GitHub Action متوقف نشه و باز بمونه!
